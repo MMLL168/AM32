@@ -215,6 +215,8 @@ an settings option)
 				 - add variable auto timing
 				 - add droneCAN
 */
+#include <stdint.h>
+
 #include "main.h"
 #include "ADC.h"
 #include "IO.h"
@@ -230,7 +232,6 @@ an settings option)
 #include "signal.h"
 #include "sounds.h"
 #include "targets.h"
-#include <stdint.h>
 #include <string.h>
 #include <assert.h>
 
@@ -247,6 +248,133 @@ an settings option)
 #endif
 
 #include <version.h>
+
+#ifdef __INTELLISENSE__
+#ifndef __attribute__
+#define __attribute__(x)
+#endif
+#ifndef AM32_INTELLISENSE_TYPES
+#define AM32_INTELLISENSE_TYPES
+typedef unsigned char uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned int uint32_t;
+typedef signed short int16_t;
+typedef signed int int32_t;
+#endif
+#ifndef RESET
+#define RESET 0U
+#endif
+#ifndef DEAD_TIME
+#define DEAD_TIME 80
+#endif
+#ifndef CPU_FREQUENCY_MHZ
+#define CPU_FREQUENCY_MHZ 64
+#endif
+#ifndef TARGET_MIN_BEMF_COUNTS
+#define TARGET_MIN_BEMF_COUNTS 2
+#endif
+#ifndef DSHOT_PRIORITY_THRESHOLD
+#define DSHOT_PRIORITY_THRESHOLD 60
+#endif
+#ifndef EEPROM_START_ADD
+#define EEPROM_START_ADD ((uint32_t)0x0800F800)
+#endif
+#ifndef FIRMWARE_NAME
+#define FIRMWARE_NAME "AM32"
+#endif
+#ifndef FILE_NAME
+#define FILE_NAME "AM32_INTELLISENSE"
+#endif
+#ifndef IC_DMA_IRQ_NAME
+#define IC_DMA_IRQ_NAME 0
+#endif
+#ifndef COM_TIMER_IRQ
+#define COM_TIMER_IRQ 0
+#endif
+#ifndef COMPARATOR_IRQ
+#define COMPARATOR_IRQ 0
+#endif
+#ifndef DMA1_Channel1_IRQn
+#define DMA1_Channel1_IRQn 0
+#endif
+#ifndef TIM1_UP_TIM16_IRQn
+#define TIM1_UP_TIM16_IRQn 0
+#endif
+#ifndef COMP1_2_3_IRQn
+#define COMP1_2_3_IRQn 0
+#endif
+#ifndef RELOAD_WATCHDOG_COUNTER
+#define RELOAD_WATCHDOG_COUNTER() ((void)0)
+#endif
+#ifndef DISABLE_COM_TIMER_INT
+#define DISABLE_COM_TIMER_INT() ((void)0)
+#endif
+#ifndef ENABLE_COM_TIMER_INT
+#define ENABLE_COM_TIMER_INT() ((void)0)
+#endif
+#ifndef SET_AND_ENABLE_COM_INT
+#define SET_AND_ENABLE_COM_INT(time) ((void)(time))
+#endif
+#ifndef SET_INTERVAL_TIMER_COUNT
+#define SET_INTERVAL_TIMER_COUNT(intertime) ((void)(intertime))
+#endif
+#ifndef INTERVAL_TIMER_COUNT
+#define INTERVAL_TIMER_COUNT (0U)
+#endif
+#ifndef SET_AUTO_RELOAD_PWM
+#define SET_AUTO_RELOAD_PWM(relval) ((void)(relval))
+#endif
+#ifndef SET_DUTY_CYCLE_ALL
+#define SET_DUTY_CYCLE_ALL(newdc) ((void)(newdc))
+#endif
+#ifndef COM_TIMER
+#if defined(TIM14)
+#define COM_TIMER TIM14
+#elif defined(TIM16)
+#define COM_TIMER TIM16
+#elif defined(TIM3)
+#define COM_TIMER TIM3
+#elif defined(TMR16)
+#define COM_TIMER TMR16
+#elif defined(TMR11)
+#define COM_TIMER TMR11
+#endif
+#endif
+#ifndef INTERVAL_TIMER
+#if defined(TIM2)
+#define INTERVAL_TIMER TIM2
+#elif defined(TIM3)
+#define INTERVAL_TIMER TIM3
+#elif defined(TIM4)
+#define INTERVAL_TIMER TIM4
+#elif defined(TMR6)
+#define INTERVAL_TIMER TMR6
+#elif defined(TMR4)
+#define INTERVAL_TIMER TMR4
+#endif
+#endif
+#ifndef TIM1
+typedef struct {
+    uint32_t BDTR;
+    uint32_t CCR1;
+    uint32_t CCR2;
+    uint32_t CCR3;
+    uint32_t ARR;
+    uint32_t CNT;
+    uint32_t SR;
+    uint32_t DIER;
+} TIM_TypeDef;
+static TIM_TypeDef __am32_intellisense_tim1;
+#define TIM1 (&__am32_intellisense_tim1)
+#endif
+#ifndef ADC1
+typedef struct {
+    uint32_t _dummy;
+} ADC_TypeDef;
+static ADC_TypeDef __am32_intellisense_adc1;
+#define ADC1 (&__am32_intellisense_adc1)
+#endif
+#endif
 
 void zcfoundroutine(void);
 
