@@ -17,3 +17,12 @@ Keil_Projects/Listings
 *.o
 .DS_Store
 .vscode/settings.json
+
+# Local/generated workspace inventory files
+file_list.txt
+project_tree.txt
+Src_file_list.txt
+Src_function_index.txt
+
+# Local tool archive
+windows-tools.zip
