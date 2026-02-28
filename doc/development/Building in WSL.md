@@ -2,6 +2,8 @@
 
 For various reasons, a custom build of AM32 might be needed. This guide provides the basic instructions needed to build AM32 in Windows Subsystem Linux (WSL).
 
+For day-to-day Windows workflow, see [Daily Development Quick Reference](Daily%20Development%20Quick%20Reference.md).
+
 ## Installing the Linux subsystem
 
 Your PC must be running a 64-bit version of Windows 10 build 1607+.
